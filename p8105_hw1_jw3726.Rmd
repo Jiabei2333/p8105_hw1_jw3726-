@@ -36,19 +36,34 @@ library(tidyverse)
 example_df = tibble(
 x = rnorm(1000),
 y = rnorm(1000),
-logical = x + y > 0)  
-as.numeric(example_df$logical)
-as.factor(example_df$logical)
+logical = x + y > 0,  
+numeric_vector = as.numeric(logical), 
+factor_vector = as.factor(logical)) 
+mean(example_df$x)
+median(example_df$x)
+
+
+
 
 
 ```
+The size of dataset is `r dim(example_df)` 
+The mean is `r mean(example_df$x)`
+The median is `r median(example_df$x)`
+The  proportion of cases for which the logical vector is TRUE is `r mean(example_df$logical)`
 
-
-
-
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
+ggplot(example_df, aes(x = x, y = y, color = logical)) + geom_point()
+ggsave("scatter_plot.pdf", height = 4, width = 6)
+ggplot(example_df, aes(x = x, y = y, color = numeric_vector)) + geom_point()
+ggplot(example_df, aes(x = x, y = y, color = factor_vector)) + geom_point()
 ```
+The three color spots look similar, and they are intensive around x=0 and y=0. It seems like the plots all have positive relationship.
+
+
+
+
+
+
+
 
