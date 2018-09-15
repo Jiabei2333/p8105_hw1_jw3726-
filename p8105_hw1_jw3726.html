@@ -137,23 +137,31 @@ $(document).ready(function () {
 <pre><code>## -- Conflicts ------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>example_df = tibble
-sample=runif(10, min=0, max=5)
-logical = sample &gt; 2
-vec_char = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Jiabei&quot;, &quot;and&quot;, &quot;I&quot;, &quot;am&quot;, &quot;a&quot;, &quot;graduate&quot;, &quot;student&quot;)
-vec_factor = factor(c(&quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;))
-mean(sample)</code></pre>
-<pre><code>## [1] 1.431192</code></pre>
-<pre class="r"><code>mean(logical)</code></pre>
-<pre><code>## [1] 0.2</code></pre>
-<pre class="r"><code>mean(vec_char)</code></pre>
-<pre><code>## Warning in mean.default(vec_char): argument is not numeric or logical:
-## returning NA</code></pre>
+<pre class="r"><code>example_df = tibble(
+sample=runif(10, min=0, max=5),
+logical = sample &gt; 2,
+vec_char = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Jiabei&quot;, &quot;and&quot;, &quot;I&quot;, &quot;am&quot;, &quot;a&quot;, &quot;graduate&quot;, &quot;student&quot;), 
+vec_factor = factor(c(&quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;)))
+mean(example_df$sample)</code></pre>
+<pre><code>## [1] 2.014314</code></pre>
+<pre class="r"><code>mean(example_df$logical)</code></pre>
+<pre><code>## [1] 0.3</code></pre>
+<pre class="r"><code>mean(example_df$vec_char)</code></pre>
+<pre><code>## Warning in mean.default(example_df$vec_char): argument is not numeric or
+## logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
-<pre class="r"><code>mean(vec_factor)</code></pre>
-<pre><code>## Warning in mean.default(vec_factor): argument is not numeric or logical:
-## returning NA</code></pre>
+<pre class="r"><code>mean(example_df$vec_factor)</code></pre>
+<pre><code>## Warning in mean.default(example_df$vec_factor): argument is not numeric or
+## logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
+<pre class="r"><code>as.numeric(example_df$logical)</code></pre>
+<pre><code>##  [1] 1 1 0 0 0 0 0 1 0 0</code></pre>
+<pre class="r"><code>as.numeric(example_df$vec_char)</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
+<pre class="r"><code>as.numeric(example_df$vec_factor)</code></pre>
+<pre><code>##  [1] 2 2 2 2 2 1 1 1 1 1</code></pre>
+<p>to calculate the mean, variable “sample” and “logical” work, since they are numeric. Varible “vec_char” and “vec_factor” don’t work, since they are not numeric.</p>
 </div>
 
 
