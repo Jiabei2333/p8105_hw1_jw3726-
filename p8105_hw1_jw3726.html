@@ -143,9 +143,9 @@ logical = sample &gt; 2,
 vec_char = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Jiabei&quot;, &quot;and&quot;, &quot;I&quot;, &quot;am&quot;, &quot;a&quot;, &quot;graduate&quot;, &quot;student&quot;), 
 vec_factor = factor(c(&quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;)))
 mean(example_df$sample)</code></pre>
-<pre><code>## [1] 2.014314</code></pre>
+<pre><code>## [1] 2.791976</code></pre>
 <pre class="r"><code>mean(example_df$logical)</code></pre>
-<pre><code>## [1] 0.3</code></pre>
+<pre><code>## [1] 0.7</code></pre>
 <pre class="r"><code>mean(example_df$vec_char)</code></pre>
 <pre><code>## Warning in mean.default(example_df$vec_char): argument is not numeric or
 ## logical: returning NA</code></pre>
@@ -155,13 +155,25 @@ mean(example_df$sample)</code></pre>
 ## logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
 <pre class="r"><code>as.numeric(example_df$logical)</code></pre>
-<pre><code>##  [1] 1 1 0 0 0 0 0 1 0 0</code></pre>
+<pre><code>##  [1] 1 1 0 1 0 1 0 1 1 1</code></pre>
 <pre class="r"><code>as.numeric(example_df$vec_char)</code></pre>
 <pre><code>## Warning: NAs introduced by coercion</code></pre>
 <pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
 <pre class="r"><code>as.numeric(example_df$vec_factor)</code></pre>
 <pre><code>##  [1] 2 2 2 2 2 1 1 1 1 1</code></pre>
-<p>to calculate the mean, variable “sample” and “logical” work, since they are numeric. Varible “vec_char” and “vec_factor” don’t work, since they are not numeric.</p>
+<pre class="r"><code>as.numeric(as.factor(example_df$vec_char))</code></pre>
+<pre><code>##  [1]  3  9  8  2  6  1  5  4  7 10</code></pre>
+<pre class="r"><code>as.numeric(as.character(example_df$vec_factor))</code></pre>
+<pre><code>## Warning: NAs introduced by coercion</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
+<p>to calculate the mean, variable “sample” and “logical” work, since they are numeric. Varible “vec_char” and “vec_factor” don’t work, since they are not numeric. when use “as. numeric”to logical, vec_char, and vec_factor, logical and vec_factor are converted to numeric numbers, while vec_char cannot be converted.</p>
+<pre class="r"><code>library(tidyverse)
+example_df = tibble(
+x = rnorm(1000),
+y = rnorm(1000),
+logical = x + y &gt; 0,  
+numeric_vector = as.numeric(logical), 
+factor_vector = as.factor(logical)) </code></pre>
 </div>
 
 

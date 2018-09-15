@@ -21,12 +21,27 @@ mean(example_df$vec_factor)
 as.numeric(example_df$logical)
 as.numeric(example_df$vec_char)
 as.numeric(example_df$vec_factor)
+as.numeric(as.factor(example_df$vec_char))
+as.numeric(as.character(example_df$vec_factor))
 
 
 
 
 ```
 to calculate the mean, variable "sample" and "logical" work, since they are numeric. Varible "vec_char" and "vec_factor" don't work, since they are not numeric. 
+when use "as. numeric"to logical, vec_char, and vec_factor, logical and vec_factor are converted to numeric numbers, while vec_char cannot be converted. 
+
+```{r}
+library(tidyverse)
+example_df = tibble(
+x = rnorm(1000),
+y = rnorm(1000),
+logical = x + y > 0)  
+as.numeric(example_df$logical)
+as.factor(example_df$logical)
+
+
+```
 
 
 
