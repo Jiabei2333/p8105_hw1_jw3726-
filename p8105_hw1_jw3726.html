@@ -143,9 +143,17 @@ logical = sample &gt; 2
 vec_char = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Jiabei&quot;, &quot;and&quot;, &quot;I&quot;, &quot;am&quot;, &quot;a&quot;, &quot;graduate&quot;, &quot;student&quot;)
 vec_factor = factor(c(&quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;))
 mean(sample)</code></pre>
-<pre><code>## [1] 3.058468</code></pre>
+<pre><code>## [1] 1.431192</code></pre>
 <pre class="r"><code>mean(logical)</code></pre>
-<pre><code>## [1] 0.8</code></pre>
+<pre><code>## [1] 0.2</code></pre>
+<pre class="r"><code>mean(vec_char)</code></pre>
+<pre><code>## Warning in mean.default(vec_char): argument is not numeric or logical:
+## returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<pre class="r"><code>mean(vec_factor)</code></pre>
+<pre><code>## Warning in mean.default(vec_factor): argument is not numeric or logical:
+## returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
 </div>
 
 

@@ -16,6 +16,8 @@ vec_char = c("My", "name", "is", "Jiabei", "and", "I", "am", "a", "graduate", "s
 vec_factor = factor(c("male", "male", "male", "male", "male", "female", "female", "female", "female", "female"))
 mean(sample)
 mean(logical)
+mean(vec_char)
+mean(vec_factor)
 
 
 
