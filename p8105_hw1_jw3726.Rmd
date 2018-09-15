@@ -1,0 +1,27 @@
+---
+title: "p8105_hw1_jw3726"
+author: "Jiabei Wang"
+date: "2018年9月13日"
+output: github_document
+
+#```
+#punif(10, min=0, max=5, lower.tail= TRUE, log.p= FALSE)
+#```
+```{r}
+sample=runif(10, min=0, max=5)
+logical = sample > 2
+
+
+
+```
+
+
+
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
