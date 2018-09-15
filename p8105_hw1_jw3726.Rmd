@@ -8,8 +8,15 @@ output: github_document
 #punif(10, min=0, max=5, lower.tail= TRUE, log.p= FALSE)
 #```
 ```{r}
+library(tidyverse)
+example_df = tibble
 sample=runif(10, min=0, max=5)
 logical = sample > 2
+vec_char = c("My", "name", "is", "Jiabei", "and", "I", "am", "a", "graduate", "student")
+vec_factor = factor(c("male", "male", "male", "male", "male", "female", "female", "female", "female", "female"))
+mean(sample)
+
+
 
 
 

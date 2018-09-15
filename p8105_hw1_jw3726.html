@@ -128,8 +128,22 @@ $(document).ready(function () {
 <p>title: “p8105_hw1_jw3726” author: “Jiabei Wang” date: “2018年9月13日” output: github_document</p>
 <div id="punif10-min0-max5-lower.tail-true-log.p-false" class="section level1">
 <h1><code>#punif(10, min=0, max=5, lower.tail= TRUE, log.p= FALSE) #</code></h1>
-<pre class="r"><code>punif(10, min=0, max=5, lower.tail= TRUE, log.p= FALSE)</code></pre>
-<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## &lt;U+221A&gt; ggplot2 3.0.0     &lt;U+221A&gt; purrr   0.2.5
+## &lt;U+221A&gt; tibble  1.4.2     &lt;U+221A&gt; dplyr   0.7.6
+## &lt;U+221A&gt; tidyr   0.8.1     &lt;U+221A&gt; stringr 1.3.1
+## &lt;U+221A&gt; readr   1.1.1     &lt;U+221A&gt; forcats 0.3.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>example_df = tibble
+sample=runif(10, min=0, max=5)
+logical = sample &gt; 2
+vec_char = c(&quot;My&quot;, &quot;name&quot;, &quot;is&quot;, &quot;Jiabei&quot;, &quot;and&quot;, &quot;I&quot;, &quot;am&quot;, &quot;a&quot;, &quot;graduate&quot;, &quot;student&quot;)
+vec_factor = factor(c(&quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;))
+mean(sample)</code></pre>
+<pre><code>## [1] 2.529857</code></pre>
 </div>
 
 
