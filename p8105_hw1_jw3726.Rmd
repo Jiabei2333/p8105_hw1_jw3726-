@@ -8,11 +8,15 @@ output: github_document
 #punif(10, min=0, max=5, lower.tail= TRUE, log.p= FALSE)
 #```
 ```{r}
+#create a data frame comprised of a random sample of size 10 from a uniform[0, 5] distribution
 library(tidyverse)
 example_df = tibble(
 sample=runif(10, min=0, max=5),
+#A logical vector indicating whether elements of the sample are greater than 2
 logical = sample > 2,
+#A (length-10) character vector
 vec_char = c("My", "name", "is", "Jiabei", "and", "I", "am", "a", "graduate", "student"), 
+#A (length-10) factor vector
 vec_factor = factor(c("male", "male", "male", "male", "male", "female", "female", "female", "female", "female")))
 mean(example_df$sample)
 mean(example_df$logical)
@@ -32,12 +36,18 @@ to calculate the mean, variable "sample" and "logical" work, since they are nume
 when use "as. numeric"to logical, vec_char, and vec_factor, logical and vec_factor are converted to numeric numbers, while vec_char cannot be converted. 
 
 ```{r}
+#Create a data frame 
 library(tidyverse)
+#x: a random sample of size 1000 from a standard Normal distribution
 example_df = tibble(
-x = rnorm(1000),
-y = rnorm(1000),
-logical = x + y > 0,  
+x = rnorm(1000, mean = 0, sd = 1),
+#y: a random sample of size 1000 from a standard Normal distribution
+y = rnorm(1000, mean = 0, sd = 1),
+#A logical vector indicating whether the x + y > 0
+logical = x + y > 0, 
+#A numeric vector created by coercing the above logical vector
 numeric_vector = as.numeric(logical), 
+#A factor vector created by coercing the above logical vector
 factor_vector = as.factor(logical)) 
 mean(example_df$x)
 median(example_df$x)
@@ -47,15 +57,19 @@ median(example_df$x)
 
 
 ```
+#short description using inline R code
 The size of dataset is `r dim(example_df)` 
 The mean is `r mean(example_df$x)`
 The median is `r median(example_df$x)`
 The  proportion of cases for which the logical vector is TRUE is `r mean(example_df$logical)`
 
 ```{r}
+#Make a scatterplot of y vs x, and color points using the logical variable 
 ggplot(example_df, aes(x = x, y = y, color = logical)) + geom_point()
 ggsave("scatter_plot.pdf", height = 4, width = 6)
+#numeric variable
 ggplot(example_df, aes(x = x, y = y, color = numeric_vector)) + geom_point()
+#factor variable
 ggplot(example_df, aes(x = x, y = y, color = factor_vector)) + geom_point()
 ```
 The three color spots look similar, and they are intensive around x=0 and y=0. It seems like the plots all have positive relationship.
